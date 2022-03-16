@@ -1,12 +1,23 @@
-# Validation Intro
+# Testing Intro
 
-Install Mongo following steps at [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/). Use Brew to install and start Mongo DB.
+I wanted to go back and implement testing on some code that I am familiar with. I chose to use some code that I have recently written for two reasons. First: I know it works. Two: The pain of manually testing is still fresh. Moving forward, I will be implementing a Test Driven Development process.  For this I will be writing my tests prior to writing the code. Writing my tests with expected outcomes in mind will allow me to cover multiple use cases all at once. This will also help me identify places where I 'broke' my code as I am going through it. Automated tests can and I am sure will save hours of headache. 
+
+### Unit Testing
+
+Unit tests are written for the smallest independently testable unit of work. Usually this can be a single function. Since my code is JS based, I will be using [Jest](https://jestjs.io/docs/getting-started).
+
+https://www.simplifiedcode.co.in/blog/how-to-write-unit-test-case-using-jest-and-nodejs/
+https://medium.com/geekculture/a-beginners-guide-to-unit-testing-with-jest-549a47edd3ea
+
+### Integration Testing
+Integration tests are written with a combination of Unit Tests. For example, if tests A and B pass, the input should be able to be used for test C.  This is done because both tests A and B can independently pass but the act of combining their functionality may not work. Integration tests will figure work this out.
+### E2E Testing
+E2E tests are runt to test your application from the point of an end-user. This can be written using [Puppeteer](https://pptr.dev/). This is added onto Jest and can run tests via a browser with or without headers.  Initially I will most likely use header so I can watch the tests run. 
+
 
 ## Requirements
 
 * [Node](https://nodejs.org/en/download/)
-* [Nodemon](https://www.npmjs.com/package/nodemon)
-* [GitHub](https://www.github.com)
 * [Express](https://expressjs.com/)
 * [Express_Generator](https://www.npmjs.com/package/express-generator/)
 * [Morgan](https://www.npmjs.com/package/morgan)
@@ -15,6 +26,8 @@ Install Mongo following steps at [MongoDB](https://docs.mongodb.com/manual/tutor
 * [BcryptJS](https://www.npmjs.com/package/bcryptjs)
 * [ValidatorJS](https://www.npmjs.com/package/validator)
 * [DotENV](https://www.npmjs.com/package/dotenv)
+* [Jest]()
+* [Puppeteer]()
 
 
 ## Overview
@@ -67,7 +80,7 @@ Remove items that we will not use. At this point of class, this will be your VIE
 1. Comment or delete out lines 3,12,13,14,20
    
 ## Add Mongo DB
-Now we are going to connect our application to a database. 
+Now we are going to connect our application to a database. Install Mongo following steps at [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/). Use Brew to install and start Mongo DB.
 ### DOTENV
 We will need to 'save' the environment path in a .env file so that the location of your DB is not public or saved to GitHub.
 1. Create a .env file.
@@ -211,26 +224,3 @@ Inside the users folder, create a folder called 'lib' short for library. In here
 
 ### index.js
 Inside the index.js, you will pull in all middleware items from various files and directories. From there you will import those functions from index.js to the Router.
-
-
-## Testing
-Early on, testing should be added and run regularly. As your app evolves, you will be upgrading and refactoring code. When changes are made you will want to make sure your functionality does not regress. To do so, write tests early and often. 
-### Unit Testing
-https://jestjs.io/docs/getting-started
-https://www.simplifiedcode.co.in/blog/how-to-write-unit-test-case-using-jest-and-nodejs/
-https://medium.com/geekculture/a-beginners-guide-to-unit-testing-with-jest-549a47edd3ea
-
-### Integration Testing
-### E2E Testing
-https://pptr.dev/
-
-
-# Needed notes
-- [ ] Organizing middleware
-- [ ] Shared middleware
-- [ ] importing JWT
-  - [ ] creating tokens
-  - [ ] validating tokens
-- [ ] linking models
-- [ ] res.locals
-- [ ] saving to two models at once
