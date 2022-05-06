@@ -1,7 +1,9 @@
 const { isAlphanumeric } = require("validator");
 
-test("Returns FALSE if blank", () => {
-	expect(isAlphanumeric("")).toBe(false);
+describe("Returns FALSE if blank", () => {
+	test("Empty", () => {
+		expect(isAlphanumeric("")).toBe(false);
+	});
 });
 test("Returns FALSE with a space", () => {
     expect(isAlphanumeric(" John")).toBe(false);

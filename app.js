@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users/usersRouter");
+const playerCharactersRouter = require("./routes/playerCharacters/playerCharactersRouter");
 
 mongoose
 	.connect(process.env.MONGO_DB, {
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/playerCharacters", playerCharactersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
