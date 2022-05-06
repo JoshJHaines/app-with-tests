@@ -2,9 +2,9 @@ const playerCharacters = require("../model/PlayerCharacters");
 
 async function getAllPC(req, res) {
 	try {
-		// let fetchedPC = await playerCharacters.find({});
+		let fetchedPC = await playerCharacters.find({});
 
-		res.json({ message: "success"});
+		res.json({ message: "success", payload: fetchedPC });
 	} catch (error) {
 		res.status(500).json({
 			message: "you have failed",
